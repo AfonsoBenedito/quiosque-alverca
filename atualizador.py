@@ -11,6 +11,6 @@ getter = requests.get(key)
 if (getter.status_code == 200): #If there's no error the json file will be written
     data = getter.json()
     with open('./data/data.json', 'w') as f:
-        json.dump(data, f, ensure_ascii=False) # ensure_ascii=False -> ensures that accented letters do not become ascii
+        json.dump(data, f, indent=4, ensure_ascii=False) # ensure_ascii=False -> ensures that accented letters do not become ascii
 else: #if there's an error, it will be printed
     print('Problemas a atualizar o quiosque. Tente novamente ou contacte a empresa.\nErro:', getter.status_code)
