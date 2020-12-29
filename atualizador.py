@@ -10,7 +10,7 @@ refresher.refresher()
 key = 'https://api.management.realizasom.com/projects/app/pt/KCLPFYWJcExvInAepy8drWCvddPEHW5Ze2dhn4xuEicMcjUT7PMgsycE8PN5hAOBK4T3Qk97UU83P75p6fZcHBZQNoqCRAYSuIeB'
 
 # HTTP request from API KEY
-getter = requests.get(key)
+getter = requests.get(key, headers={'User-Agent': 'Mozilla/5.0'})
 
 
 ####################################################################################
@@ -19,8 +19,8 @@ getter = requests.get(key)
 
 if (getter.status_code == 200): #If there's no error the json file will be written
     data = getter.json()
-    with open('./data/data.json', 'w') as f:
-        json.dump(data, f, indent=4, ensure_ascii=False) # ensure_ascii=False -> ensures that accented letters do not become ascii
+    with open('./front-end/src/assets/data/data.json', 'w') as f:
+        json.dump(data, f, indent=4, ensure_ascii=True) # ensure_ascii=False -> ensures that accented letters do not become ascii
 else: #if there's an error, it will be printed
     print('Problemas a atualizar o quiosque. Tente novamente ou contacte a empresa.\nErro:', getter.status_code)
 
@@ -51,7 +51,7 @@ def downloader(fileURL, time = -1):
 
     if response.status_code == 200:
         response.raw.decode_content = True
-        with open('./{}/{}'.format(tipo, fileURL),'wb') as f:
+        with open('./front-end/public/assets/{}/{}'.format(tipo, fileURL),'wb') as f:
             shutil.copyfileobj(response.raw, f)
         print('{} sucessfully Downloaded: '.format(tipo.capitalize()),'{}'.format(fileURL))
 
