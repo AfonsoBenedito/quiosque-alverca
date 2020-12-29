@@ -7,26 +7,32 @@ def refresher():
 
     Ensures: New folders, without any content
     '''
-    if os.path.exists('baseImages'):
-        shutil.rmtree('baseImages')
+    if os.path.exists('./front-end/public/assets/baseImages'):
+        shutil.rmtree('./front-end/public/assets/baseImages')
 
-    if os.path.exists('images'):
-        shutil.rmtree('images') 
+    if os.path.exists('./front-end/public/assets/images'):
+        shutil.rmtree('./front-end/public/assets/images') 
 
-    if os.path.exists('thumbnails'):
-        shutil.rmtree('thumbnails')
+    if os.path.exists('./front-end/public/assets/thumbnails'):
+        shutil.rmtree('./front-end/public/assets/thumbnails')
 
-    if os.path.exists('videos'):
-        shutil.rmtree('videos')
+    if os.path.exists('./front-end/public/assets/videos'):
+        shutil.rmtree('./front-end/public/assets/videos')
+        
+    if os.path.exists('./front-end/public/assets/data'):
+        shutil.rmtree('./front-end/public/assets/data')
 
-    if not os.path.exists('baseImages'):
-        os.makedirs('baseImages')
+    if not os.path.exists('./front-end/public/assets/baseImages'):
+        os.makedirs('./front-end/public/assets/baseImages')
 
-    if not os.path.exists('images'):
-        os.makedirs('images') 
+    if not os.path.exists('./front-end/public/assets/images'):
+        os.makedirs('./front-end/public/assets/images') 
 
-    if not os.path.exists('thumbnails'):
-        os.makedirs('thumbnails')
+    if not os.path.exists('./front-end/public/assets/thumbnails'):
+        os.makedirs('./front-end/public/assets/thumbnails')
 
-    if not os.path.exists('videos'):
-        os.makedirs('videos')
+    if not os.path.exists('./front-end/public/assets/videos'):
+        os.makedirs('./front-end/public/assets/videos')
+    
+    if not os.path.exists('./front-end/public/assets/data'):
+        os.makedirs('./front-end/public/assets/data')
