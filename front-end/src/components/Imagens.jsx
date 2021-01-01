@@ -5,6 +5,7 @@ import './Imagens.css';
 import setaEsquerda from '../assets/icons/baseline_arrow_left.png'
 import setaDireita from '../assets/icons/baseline_arrow_right.png'
 import setaVoltar from '../assets/icons/return_arrow.png'
+import hl from '../assets/icons/hl.png'
 import {Link} from 'react-router-dom'
 
 class Imagens extends Component{
@@ -105,10 +106,10 @@ class Imagens extends Component{
         const displayThumbs = this.pontos.map((ponto, index) =>
             {if(ponto.idPonto == this.state.idPonto){
                     if(ponto.tipo == 'Imagem'){
-                        return(<img src={ponto.thumbnail} onClick={() => this.handleClickThumb(ponto.id)}/>)
+                        return(<img className ='thumbnails' src={ponto.thumbnail} onClick={() => this.handleClickThumb(ponto.id)}/>)
                     }else if(ponto.tipo == 'Video'){
                         return(
-                            <video src ={ponto.url} onClick={() => this.handleClickThumb(ponto.id)} autoplay='true' loop/>
+                            <video className ='thumbnails'  src ={ponto.url} onClick={() => this.handleClickThumb(ponto.id)}  loop/>
                         )
                     }
                 }
@@ -118,17 +119,27 @@ class Imagens extends Component{
         const displayPrincipal = this.pontos.map((ponto, index) => {
             if (ponto.id == this.state.activeIndex){
                 if(ponto.tipo == 'Imagem'){
-                    return(<img src={ponto.thumbnail}/>)
+                    return(
+                        <div>
+                            <section className = 'espacoPrincipal'>
+                                <img className = 'imagemPrincipal' src={ponto.thumbnail}/>
+                            </section>
+                        </div>
+                    )
             }else if(ponto.tipo == 'Video'){
                 return(
-                    <video src ={ponto.url} autoplay='true' loop/>
+                    <div>
+                        <section className = 'espacoPrincipal'>
+                            <video className = 'imagemPrincipal' src ={ponto.url} autoplay='true' loop/>
+                        </section>
+                    </div>
                 )
             }
         }})
 
         const texto = this.pontos.map((ponto, index) =>{
             if (ponto.id == this.state.activeIndex){
-                return(<h3>{ponto.caption}</h3>)
+                return(<h3 className = 'textoPonto'>{ponto.caption}</h3>)
             }})
 
         const arrayAtual = []
@@ -141,28 +152,48 @@ class Imagens extends Component{
 
         const setaParaTras = () => {
             if(this.state.activeIndex != arrayAtual[0]){
-                return(<img src={setaEsquerda} onClick={() => this.handleClickSetaTras(arrayAtual)}/>)
-            } else{
-                return(<img className = 'desativado' src={setaEsquerda}/>)
+                return(
+                    <div className = 'setaTras'>
+                        <img src={setaEsquerda} onClick={() => this.handleClickSetaTras(arrayAtual)}/>
+                    </div>
+
+            )} else{
+                return(<div className = 'setaTras'>
+                        <img className = 'desativado' src={setaEsquerda}/>
+                    </div>)
             }
         }
 
         const setaParaFrente = () => {
             if(this.state.activeIndex != arrayAtual[arrayAtual.length - 1]){
-                return(<img src={setaDireita} onClick={() => this.handleClickSetaFrente(arrayAtual)}/>)
+                return(
+                <div className = 'setaFrente'>
+                    <img src={setaDireita} onClick={() => this.handleClickSetaFrente(arrayAtual)}/>)
+                </div>)
             } else{
-                return(<img className = 'desativado' src={setaDireita}/>)
+                return(<div className = 'setaFrente'>
+                        <img className = 'desativado' src={setaDireita}/>
+                    </div>)
             }
         }
 
-        const setaVoltarHome = <Link to={'/'}><img src={setaVoltar} /></Link>
+        const setaVoltarHome = <Link to={'/'}>
+                <div className = 'returnHome'>
+                    <img className = 'setaHome' src={setaVoltar} />
+                    <p>Voltar à Galeria</p>
+                </div>
+            </Link>
 
         const textoRoom = this.pontos.map((ponto, index) =>{
             if (ponto.id == this.state.activeIndex){
                 return(
                     <div>
-                        <h2>{ponto.namePonto}</h2>
-                        <p>{ponto.languageDescPonto}</p>
+                        <div className = 'pointInfo'>
+                            <h2>{ponto.namePonto}</h2>
+                            {/* <img className = 'hl' src={hl} /> */}
+                            <hr />
+                            <p>{ponto.languageDescPonto}</p>
+                        </div>
                     </div>
                 )
             }})

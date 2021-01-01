@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import data from '../assets/data/data.json'
 import Point from './Point'
+import vl from '../assets/icons/vl.png'
+import hl from '../assets/icons/hl.png'
+import hamburguer from '../assets/icons/hamburguer.png'
+import './Home.css';
 import {Link} from 'react-router-dom'
 
 class Home extends Component{
@@ -29,12 +33,12 @@ class Home extends Component{
 
         const baseImages = this.pontos.map((pontos) => {
             return(
-            <div>
-                <Link to={`/imagens/${pontos.idPonto}`}>
-                    <img src={pontos.baseImagePonto}/>
-                    <p>{pontos.namePonto}</p>
-                </Link>
-            </div>                
+                <div className='componenteImagem'>
+                    <Link to={`/imagens/${pontos.idPonto}`}>
+                        <img src={pontos.baseImagePonto}/>
+                        <p>{pontos.namePonto}</p>
+                    </Link>
+                </div>                
             )
         })
 
@@ -43,9 +47,16 @@ class Home extends Component{
 
         return(
             <div>
-                {baseImages}
-                {tituloLateral}
-                {descricaoLateral}
+                <div className = 'grid'>
+                    {baseImages}    
+                </div>
+                <div className='sideBar'>
+                    {tituloLateral}
+                    {descricaoLateral}
+                </div>
+                <img className = 'vl' src={vl}/>
+                <img className = 'hl' src={hl} />
+                <img className = 'hamburguer' src = {hamburguer} />
             </div>
         )
     }
