@@ -3,14 +3,20 @@ import data from '../assets/data/data.json'
 import Point from './Point'
 import vl from '../assets/icons/vl.png'
 import hl from '../assets/icons/hl.png'
-import hamburguer from '../assets/icons/hamburguer.png'
+import logo from '../assets/icons/logo.png'
 import './Home.css';
 import {Link} from 'react-router-dom'
+import HamburguerMenu from './HamburguerMenu'
+import Idle from './Idle'
 
 class Home extends Component{
     constructor(){
         super();
         this.pontos = [];
+        this.state = {
+            isIdle: true
+        }
+        this.changeToFalse = this.changeToFalse.bind(this)
     }
     
     creator(data){
@@ -19,14 +25,26 @@ class Home extends Component{
             const namePonto = data['rooms'][0]['points'][i]['name']
             const baseImagePonto = '/assets/baseImages/' + data['rooms'][0]['points'][i]['baseImage']
             const titlePonto = data['rooms'][0]['points'][i]['title']
+            const subtitlePonto = data['rooms'][0]['points'][i]['subtitle']
             const languageDescPonto = data['rooms'][0]['points'][i]['languageDesc']
-            const ponto = new Point(idPonto, namePonto, baseImagePonto, titlePonto, languageDescPonto)
+            const number = data['rooms'][0]['points'][i]['number']
+            const ponto = new Point(idPonto, namePonto, baseImagePonto, titlePonto, subtitlePonto, languageDescPonto, number)
             this.pontos.push(ponto)
         }
+        this.pontos.sort((a, b) => (a.number > b.number) ? 1 : -1)
     }
 
     componentWillMount(){
         this.creator(data)
+    }
+
+    changeToFalse(){
+        // this.setState({isIdle: false})
+        // console.log('yey')
+    }
+
+    componentDidMount(){
+        this.setState({isIdle: false})
     }
     
     render(){
@@ -36,7 +54,8 @@ class Home extends Component{
                 <div className='componenteImagem'>
                     <Link to={`/imagens/${pontos.idPonto}`}>
                         <img src={pontos.baseImagePonto}/>
-                        <p>{pontos.namePonto}</p>
+                        <h1>{pontos.titlePonto}</h1>
+                        <h2>{pontos.subtitlePonto}</h2>
                     </Link>
                 </div>                
             )
@@ -47,6 +66,7 @@ class Home extends Component{
 
         return(
             <div>
+                <HamburguerMenu/>
                 <div className = 'grid'>
                     {baseImages}    
                 </div>
@@ -54,9 +74,11 @@ class Home extends Component{
                     {tituloLateral}
                     {descricaoLateral}
                 </div>
-                <img className = 'vl' src={vl}/>
                 <img className = 'hl' src={hl} />
-                <img className = 'hamburguer' src = {hamburguer} />
+                <img className = 'logo' src={logo} />
+                <div id = 'azul'></div>
+                {/* <Idle isItOn = {this.state.isIdle}/> */}
+                
             </div>
         )
     }

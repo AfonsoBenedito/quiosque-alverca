@@ -5,6 +5,8 @@ import './Imagens.css';
 import setaEsquerda from '../assets/icons/baseline_arrow_left.png'
 import setaDireita from '../assets/icons/baseline_arrow_right.png'
 import setaVoltar from '../assets/icons/return_arrow.png'
+import thumbsEsquerda from '../assets/icons/thumbs_esquerda.png'
+import thumbsDireita from '../assets/icons/thumbs_direita.png'
 import hl from '../assets/icons/hl.png'
 import {Link} from 'react-router-dom'
 
@@ -12,9 +14,13 @@ class Imagens extends Component{
     constructor(match){
         super();
         this.pontos = [];
+        this.thumbsDiv = React.createRef();
+        this.setaEsquerda = React.createRef();
+        this.setaDireita = React.createRef();
         this.state = {
             idPonto: parseInt(match.location.pathname.replace('/imagens/', '')),
-            activeIndex: null
+            activeIndex: null,
+            final: null
         }
     }
 
@@ -43,13 +49,14 @@ class Imagens extends Component{
             }
         }
     }
-    
+
     creator(data){
         for (let i = 0; i < data['rooms'][0]['points'].length; i++){
             const idPonto = data['rooms'][0]['points'][i]['id']
             const namePonto = data['rooms'][0]['points'][i]['name']
             const baseImagePonto = data['rooms'][0]['points'][i]['baseImage']
             const titlePonto = data['rooms'][0]['points'][i]['title']
+            const subtitlePonto = data['rooms'][0]['points'][i]['subtitle']
             const languageDescPonto = data['rooms'][0]['points'][i]['languageDesc']
 
             for (let l = 0; l < data['rooms'][0]['points'][i]['slideshow'].length; l++){
@@ -60,12 +67,12 @@ class Imagens extends Component{
                 const caption = data['rooms'][0]['points'][i]['slideshow'][l]['caption']
                 if(time > 0 && time < 100){
                     const url = '/assets/images/' + data['rooms'][0]['points'][i]['slideshow'][l]['url']
-                    const ponto = new Point(idPonto, namePonto, baseImagePonto, titlePonto, languageDescPonto, id, name, url, 'Imagem', time, caption, url)
+                    const ponto = new Point(idPonto, namePonto, baseImagePonto, titlePonto, subtitlePonto, languageDescPonto, 'null', id, name, url, 'Imagem', time, caption, url)
                     this.pontos.push(ponto)
 
                 }else if(time > 199 && time < 300){
                     const url = '/assets/videos/' + data['rooms'][0]['points'][i]['slideshow'][l]['url']
-                    const ponto = new Point(idPonto, namePonto, baseImagePonto, titlePonto, languageDescPonto, id, name, url, 'Video', time, caption, url)
+                    const ponto = new Point(idPonto, namePonto, baseImagePonto, titlePonto, subtitlePonto, languageDescPonto, 'null', id, name, url, 'Video', time, caption, url)
                     this.pontos.push(ponto)
 
                 }
@@ -101,6 +108,49 @@ class Imagens extends Component{
         })
         this.pontos.reverse()
     }
+
+    thumbsDireita(){
+        const vaar = this.thumbsDiv.current;
+        vaar.scrollLeft += 100;
+    }
+
+    thumbsEsquerda(){
+        const vaar = this.thumbsDiv.current;
+        vaar.scrollLeft -= 100;
+        console.log(vaar)
+    }
+
+    checkWidth(){
+        const vaar = this.thumbsDiv.current;
+        vaar.scrollLeft += vaar.scrollWidth
+        const final = vaar.scrollLeft
+        vaar.scrollLeft -= vaar.scrollWidth
+        return (final)
+    }
+
+    componentDidMount(){
+        const vaar = this.thumbsDiv.current;
+        const setaEsquerda = this.setaEsquerda.current;
+        const setaDireita = this.setaDireita.current;
+        setTimeout(()=>{
+            this.setState({
+                final: this.checkWidth()
+            })
+        }, 3000)
+        setInterval(() =>{
+            if(vaar.scrollLeft == 0){
+                setaEsquerda.style.opacity = 0.25
+            } else{
+                setaEsquerda.style.opacity = 1
+            };
+
+            if(vaar.scrollLeft == this.state.final){
+                setaDireita.style.opacity = 0.25
+            } else{
+                setaDireita.style.opacity = 1
+            };
+        }, 1000)        
+    }
     
     render(){
         const displayThumbs = this.pontos.map((ponto, index) =>
@@ -124,6 +174,7 @@ class Imagens extends Component{
                             <section className = 'espacoPrincipal'>
                                 <img className = 'imagemPrincipal' src={ponto.thumbnail}/>
                             </section>
+                            <img className = 'imagemFundo' src={ponto.thumbnail}/>
                         </div>
                     )
             }else if(ponto.tipo == 'Video'){
@@ -132,6 +183,7 @@ class Imagens extends Component{
                         <section className = 'espacoPrincipal'>
                             <video className = 'imagemPrincipal' src ={ponto.url} autoplay='true' loop/>
                         </section>
+                        <video className = 'imagemFundo' src ={ponto.url}/>
                     </div>
                 )
             }
@@ -139,7 +191,11 @@ class Imagens extends Component{
 
         const texto = this.pontos.map((ponto, index) =>{
             if (ponto.id == this.state.activeIndex){
-                return(<h3 className = 'textoPonto'>{ponto.caption}</h3>)
+                return(
+                    <div className = 'textoP'>
+                        <h3 className = 'textoPonto'>{ponto.caption}</h3>
+                    </div>
+                    )
             }})
 
         const arrayAtual = []
@@ -168,7 +224,7 @@ class Imagens extends Component{
             if(this.state.activeIndex != arrayAtual[arrayAtual.length - 1]){
                 return(
                 <div className = 'setaFrente'>
-                    <img src={setaDireita} onClick={() => this.handleClickSetaFrente(arrayAtual)}/>)
+                    <img src={setaDireita} onClick={() => this.handleClickSetaFrente(arrayAtual)}/>
                 </div>)
             } else{
                 return(<div className = 'setaFrente'>
@@ -176,6 +232,8 @@ class Imagens extends Component{
                     </div>)
             }
         }
+
+        
 
         const setaVoltarHome = <Link to={'/'}>
                 <div className = 'returnHome'>
@@ -189,8 +247,8 @@ class Imagens extends Component{
                 return(
                     <div>
                         <div className = 'pointInfo'>
-                            <h2>{ponto.namePonto}</h2>
-                            {/* <img className = 'hl' src={hl} /> */}
+                            <h1>{ponto.titlePonto}</h1>
+                            <h2>{ponto.subtitlePonto}</h2>
                             <hr />
                             <p>{ponto.languageDescPonto}</p>
                         </div>
@@ -198,16 +256,32 @@ class Imagens extends Component{
                 )
             }})
 
+        // const setFinal = () =>{
+        //     const vaar = this.thumbsDiv.current;
+        //     // vaar.scrollLeft = vaar.scrollWidth
+        //     // vaar.scrollLeft += vaar.scrollWidth;
+        //     // this.setState({final: vaar.scrollLeft})
+        //     // vaar.scrollLeft -= vaar.scrollWidth
+        //     console.log(vaar)
+        // }
 
         return(
             <div>
-                {displayThumbs}
-                {displayPrincipal}
-                {texto}
-                {setaParaTras()}
-                {setaParaFrente()}
-                {textoRoom}
-                {setaVoltarHome}
+                <div className = 'imagenscss'>
+                    <div id = "retanguloBranco"></div>
+                    <div id = "retanguloAzul"></div>
+                    <div class = 'thumbsDiv' ref = {this.thumbsDiv}>
+                        {displayThumbs}
+                    </div>
+                    {displayPrincipal}
+                    {texto}
+                    {setaParaTras()}
+                    {setaParaFrente()}
+                    {textoRoom}
+                    {setaVoltarHome}
+                    <img className = 'setaThumbDireita' onClick ={this.thumbsDireita.bind(this)} ref = {this.setaDireita} src={thumbsDireita} />
+                    <img className = 'setaThumbEsquerda' ref = {this.setaEsquerda} onClick ={this.thumbsEsquerda.bind(this)} src={thumbsEsquerda} />
+                </div>
             </div>
         )
     }
