@@ -1,0 +1,39 @@
+.rectLang{
+    position: absolute;
+    top: 930px;
+    left: -11px;
+}
+
+.eng{
+    position: absolute;
+    top: 955px;
+    left: 19px;
+    width: 36px;
+    height: 36px;
+    opacity: 1;
+}
+
+.pt{
+    position: absolute;
+    top: 955px;
+    left: 76px;
+    width: 36px;
+    height: 36px;
+}
+
+.spa{
+    position: absolute;
+    top: 955px;
+    left: 190px;
+    width: 36px;
+    height: 36px;
+    opacity: 1;
+}
+
+.fra{
+    position: absolute;
+    top: 957px;
+    left: 133px;
+    width: 35px;
+    height: 33px;
+}

@@ -1,13 +1,16 @@
-import React, { Component } from "react";
+import React, { Component, useRef } from "react";
 import Imagens from './components/Imagens'
 import Home from './components/Home'
 import {BrowserRouter as Router, Switch, Route} from'react-router-dom'
+import Language from './components/Language'
+import Idle from './components/Idle'
+
 
 class App extends Component{
   constructor(props){
     super(props)
   }
-  render(){
+  render(){    
     return (
       <div>
         {console.clear()}
@@ -17,6 +20,9 @@ class App extends Component{
             <Route path='/imagens' component={Imagens}/>
           </Switch>
         </Router>
+        <Language />
+        <Idle/>
+        
       </div>
     );
   }

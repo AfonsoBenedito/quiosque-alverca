@@ -3,12 +3,15 @@ import data from '../assets/data/data.json'
 import Imagens from './Imagens'
 
 export default class Point{
-    constructor(idPonto, namePonto, baseImagePonto, titlePonto, languageDescPonto, id, name, url, tipo, time, caption, thumbnail){
+    constructor(idPonto, namePonto, baseImagePonto, titlePonto, subtitlePonto, languageDescPonto, number, id, name, url, tipo, time, caption, thumbnail){
         this.idPonto = idPonto
         this.namePonto = namePonto
         this.baseImagePonto = baseImagePonto
         this.titlePonto = titlePonto
+        this.subtitlePonto = subtitlePonto
         this.languageDescPonto = languageDescPonto
+
+        this.number = number
 
         this.id = id 
         this.name = name

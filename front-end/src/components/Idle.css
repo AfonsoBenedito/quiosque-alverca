@@ -1,0 +1,40 @@
+.idle{
+    position:absoltue;
+    top:0px;
+}
+
+.idle .principal{
+    position: absolute;
+    top: 0px;
+    left: -1px;
+    transition: 1000ms;
+    z-index: 500;
+}
+
+.idle .logos{
+    position: absolute;
+    top: 0px;
+    left: -0.0001%;
+    /* transition-delay: 1500ms; */
+    transition: 500ms;
+    z-index: 1000;
+}
+
+.idle.active{
+    transition: 1000ms;
+    z-index: -50;
+}
+
+.idle.active .principal{
+    position: absolute;
+    left:-77.74%;
+    transition-delay: 500ms;
+    transition: 1000ms;
+    z-index: -3;
+}
+
+.idle.active .logos{
+    opacity: 0;
+    transition: 500ms;
+    z-index: -1;
+}
