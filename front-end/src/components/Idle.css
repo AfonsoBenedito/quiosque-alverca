@@ -27,7 +27,7 @@
 
 .idle.active .principal{
     position: absolute;
-    left:-77.74%;
+    left:-100%;
     transition-delay: 500ms;
     transition: 1000ms;
     z-index: -3;

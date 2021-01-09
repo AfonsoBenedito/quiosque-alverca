@@ -208,7 +208,7 @@ iframe{
 
 .componenteImagem h1{
     position: absolute;
-    top: 5px;
+    top: 155px;
     left: 26px;
     width: 252px;
     height: 39px;
@@ -224,9 +224,9 @@ iframe{
 
 .componenteImagem h2{
     position: absolute;
-    top: 35px;
+    top: 187px;
     left: 26px;
-    width: 252px;
+    width: 335px;
     height: 39px;
     font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-bold) var(--unnamed-font-size-30)/var(--unnamed-line-spacing-39) var(--unnamed-font-family-roboto);
     letter-spacing: var(--unnamed-character-spacing-0);
@@ -236,7 +236,7 @@ iframe{
     color: #FFFFFF;
     text-shadow: 4px 9px 6px #00000029;
     opacity: 1;
-    font-size: 140%;
+    font-size: 163%;
 }
 
 .hamburguer{
@@ -251,7 +251,7 @@ iframe{
 }
 
 body{
-    background-color: #1C1C1C;
+    /* background-color: #1C1C1C; */
 }
 
 ::selection {
@@ -279,3 +279,13 @@ body{
     border-right: 5px solid white;
     z-index: -50;
 } */
+
+#retanguloCastanho{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 1080px;
+    width: 1920px;
+    background:#1C1C1C;
+    z-index: -50;
+}

@@ -3,6 +3,7 @@ import idle_logos from '../assets/icons/idle_logos.png'
 import teste from '../assets/icons/teste.png'
 import './Idle.css';
 import IdleTimer from 'react-idle-timer'
+import { AnimatePresence, motion } from "framer-motion";
 import {BrowserRouter as Router, Switch, Route, Link, Redirect} from'react-router-dom'
 
 function Idle(props){
@@ -22,7 +23,7 @@ function Idle(props){
 
     return(
         <>
-            <div className={idleImage ? 'idle' : 'idle active'} onClick={showIdle}>
+            <div initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}} className={idleImage ? 'idle' : 'idle active'} onClick={showIdle}>
                 <div className='imagem'>
                     <img className='principal' src={teste}/>
                 </div>

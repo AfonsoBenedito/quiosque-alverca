@@ -1,28 +1,32 @@
 export const HamburguerData = [
     {
         title: 'Quem somos',
-        texto: 'Algo',
-        cName: 'nav-text'
+        texto: 'O Núcleo de Alverca (MM-NA), inaugurado em Maio de 1990, é parte do Museu Municipal de Vila Franca de Xira.',
+        cName: 'qs'
         
     },
     {
         title: 'Contactos',
-        texto: 'Alguma Coisa',
-        cName: 'nav-text'
+        textoMuseu: 'MUSEU MUNICIPAL – NÚCLEO DE ALVERCA',
+        texto2: 'Câmara Municipal de Vila Franca de Xira',
+        texto3: 'Divisão de Cultura, Museus e Património Histórico',
+        texto4: 'Tel.: 219 570 305',
+        texto5: 'E-mail: museumunicipal.nucleoalverca@cm-vfxira.pt',
+        cName: 'cont'
     },
     {
         title: 'Acessibilidade',
-        texto: 'asdasd',
-        cName: 'nav-text'
+        texto: 'Dispõe no seu espaço, os elementos necessários a satisfação das normas de acessibilidade.',
+        cName: 'ace'
     },
-    {
-        title: 'Configurações',
-        texto: 'asdadsada',
-        cName: 'nav-text'
-    },
+    // {
+    //     title: 'Configurações',
+    //     texto: '',
+    //     cName: 'conf'
+    // },
     {
         title: 'Créditos',
-        texto: 'dsadasdadasdad',
-        cName: 'nav-text'
+        texto: '',
+        cName: 'cre'
     }
 ]
