@@ -9,6 +9,7 @@ import thumbsEsquerda from '../assets/icons/thumbs_esquerda.png'
 import thumbsDireita from '../assets/icons/thumbs_direita.png'
 import hl from '../assets/icons/hl.png'
 import {Link} from 'react-router-dom'
+import { AnimatePresence, motion } from "framer-motion";
 
 class Imagens extends Component{
     constructor(match){
@@ -174,7 +175,7 @@ class Imagens extends Component{
                             <section className = 'espacoPrincipal'>
                                 <img className = 'imagemPrincipal' src={ponto.thumbnail}/>
                             </section>
-                            <img className = 'imagemFundo' src={ponto.thumbnail}/>
+                            {/* <img className = 'imagemFundo' src={ponto.thumbnail}/> */}
                         </div>
                     )
             }else if(ponto.tipo == 'Video'){
@@ -183,6 +184,23 @@ class Imagens extends Component{
                         <section className = 'espacoPrincipal'>
                             <video className = 'imagemPrincipal' src ={ponto.url} autoplay='true' loop/>
                         </section>
+                        {/* <video className = 'imagemFundo' src ={ponto.url}/> */}
+                    </div>
+                )
+            }
+        }})
+
+        const imagemDeFundo = this.pontos.map((ponto, index) => {
+            if (ponto.id == this.state.activeIndex){
+                if(ponto.tipo == 'Imagem'){
+                    return(
+                        <div>
+                            <img className = 'imagemFundo' src={ponto.thumbnail}/>
+                        </div>
+                    )
+            }else if(ponto.tipo == 'Video'){
+                return(
+                    <div>
                         <video className = 'imagemFundo' src ={ponto.url}/>
                     </div>
                 )
@@ -256,31 +274,46 @@ class Imagens extends Component{
                 )
             }})
 
-        // const setFinal = () =>{
-        //     const vaar = this.thumbsDiv.current;
-        //     // vaar.scrollLeft = vaar.scrollWidth
-        //     // vaar.scrollLeft += vaar.scrollWidth;
-        //     // this.setState({final: vaar.scrollLeft})
-        //     // vaar.scrollLeft -= vaar.scrollWidth
-        //     console.log(vaar)
-        // }
-
         return(
             <div>
                 <div className = 'imagenscss'>
-                    <div id = "retanguloBranco"></div>
-                    <div id = "retanguloAzul"></div>
-                    <div class = 'thumbsDiv' ref = {this.thumbsDiv}>
+                    
+
+                    <motion.div initial = {{x: -427}} animate = {{x: -1, transition: {delay: 0.1, duration: 0.75}}} exit = {{x: -427, transition:{duration: 0.75}}} id = "retanguloAzul"></motion.div>
+
+                    <motion.div initial = {{x: 1920}} animate = {{x: 0, transition: {delay: 0.1, duration: 0.75}}} exit = {{x: 1920, transition:{duration: 0.75}}} class = 'thumbsDiv' ref = {this.thumbsDiv}>
                         {displayThumbs}
+                    </motion.div>
+
+                    <motion.div initial = {{x: 1920, y: 0}} animate = {{x: 0, y: -5, transition: {delay: 0.1, duration: 0.75}}} exit = {{x: 1920, y: -5, transition:{duration: 0.75}}}>
+                        {displayPrincipal}
+                    </motion.div>
+
+                    <div>
+                        
+                        <motion.div initial = {{x: 1920, y:0}} animate = {{x: 0,y: -5, transition: {delay: 0.1, duration: 0.75}}} exit = {{x: 1920, y: -5, transition:{duration: 0.75}}}>
+                            {setaParaTras()}
+                            {texto}
+                            {setaParaFrente()}
+                        </motion.div>
+                        
+                        <motion.img initial = {{x: 1920}} animate = {{x: 0, transition: {delay: 0.1, duration: 0.75}}} exit = {{x: 1920, transition:{duration: 0.75}}} className = 'setaThumbDireita' onClick ={this.thumbsDireita.bind(this)} ref = {this.setaDireita} src={thumbsDireita} />
+                        <motion.img initial = {{x: 1920}} animate = {{x: 0, transition: {delay: 0.1, duration: 0.75}}} exit = {{x: 1920, transition:{duration: 0.75}}} className = 'setaThumbEsquerda' ref = {this.setaEsquerda} onClick ={this.thumbsEsquerda.bind(this)} src={thumbsEsquerda} />
                     </div>
-                    {displayPrincipal}
-                    {texto}
-                    {setaParaTras()}
-                    {setaParaFrente()}
-                    {textoRoom}
-                    {setaVoltarHome}
-                    <img className = 'setaThumbDireita' onClick ={this.thumbsDireita.bind(this)} ref = {this.setaDireita} src={thumbsDireita} />
-                    <img className = 'setaThumbEsquerda' ref = {this.setaEsquerda} onClick ={this.thumbsEsquerda.bind(this)} src={thumbsEsquerda} />
+
+                    <motion.div initial = {{x: -427, y: 0}} animate = {{x: 0, y: -10, transition: {delay: 0.1, duration: 0.75}}} exit = {{x: -427, y: -10, transition:{duration: 0.75}}}>
+                        {textoRoom}
+                        {setaVoltarHome}
+                    </motion.div>
+                    
+
+                    <motion.div initial = {{opacity: 1}} animate = {{opacity: 1, transition: {duration: 0.2}}} exit = {{opacity: 0.5, transition: {delay: 0.85, duration: 0.1}}}>
+                        <div id = "retanguloBranco"></div>
+                    </motion.div>
+
+                    <motion.div initial = {{opacity: 0}} animate = {{opacity: 1, transition: {duration: 0.1, delay: 0.1}}} exit = {{opacity: 0, transition: {delay: 0.75, duration: 0.1}}}>
+                        {imagemDeFundo}
+                    </motion.div>
                 </div>
             </div>
         )

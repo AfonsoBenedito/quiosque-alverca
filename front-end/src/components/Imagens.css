@@ -44,6 +44,10 @@
     --unnamed-line-spacing-51: 51px;
     --unnamed-line-spacing-130: 130px;
     }
+
+    body{
+        background-image: url('../assets/icons/imagem_fundo.jpg');
+    }
     
     /* Character Styles */
     .unnamed-character-style-1 {
@@ -117,6 +121,7 @@
     line-height: var(--unnamed-line-spacing-30);
     letter-spacing: var(--unnamed-character-spacing-0);
     color: var(--unnamed-color-ffffff);
+
 }
 
 .espacoPrincipal{
@@ -150,9 +155,9 @@
 #retanguloBranco{
     position: absolute;
     top: 0px;
-    left: 426px;
+    left: 0px;
     height: 1080px;
-    width: 1494px;
+    width: 1920px;
     background:#F4f4f4;
     z-index: -50;
 }
@@ -164,7 +169,7 @@
     height: 1080px;
     width: 427px;
     background: var(--unnamed-color-00517d) 0% 0% no-repeat padding-box;
-    background: #00517D 0% 0% no-repeat padding-box;
+    background: #004063 0% 0% no-repeat padding-box;
     box-shadow: 4px 0px 6px #00000029;
     opacity: 0.9;
     border-right: 5px solid white;

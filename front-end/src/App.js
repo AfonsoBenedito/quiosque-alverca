@@ -4,6 +4,7 @@ import Home from './components/Home'
 import {BrowserRouter as Router, Switch, Route} from'react-router-dom'
 import Language from './components/Language'
 import Idle from './components/Idle'
+import { AnimatePresence, motion } from "framer-motion";
 
 
 class App extends Component{
@@ -14,15 +15,29 @@ class App extends Component{
     return (
       <div>
         {console.clear()}
-        <Router>
+        {/* <Router>
           <Switch>
             <Route path='/' exact component={Home} />
             <Route path='/imagens' component={Imagens}/>
           </Switch>
-        </Router>
-        <Language />
-        <Idle/>
-        
+        </Router> */}
+
+      <Router>
+        <Route
+        render={({ location }) => (
+          <AnimatePresence exitBeforeEnter intial = {false}>
+              
+            <Switch location={location} key={location.pathname}>
+              <Route exact path="/" component={Home} />
+              <Route path="/imagens" component={Imagens} />
+            </Switch>
+          </AnimatePresence>
+        )}
+      />
+      </Router>
+
+      <Language />
+      <Idle />
       </div>
     );
   }

@@ -1,0 +1,37 @@
+.setaHamb-hidden{
+    /* z-index: -1000; */
+    /* background-image: url('../assets/icons/teste.png'); */
+    /* position: absolute;
+    top: 35px;
+    left: 50px; */
+    opacity: -1;
+}
+
+.setaHamb-active{
+    /* background-image: url('../assets/icons/teste.png'); */
+    opacity: 1;
+    position: absolute;
+    top: 25px;
+    left: 35px;
+    z-index: 500;
+    height:150px;
+    width: 300px;
+    /* background-color:red; */
+}
+
+.setaHamb-active img{
+    background-color: #61a0b7;
+    top: 55px;
+    left: 20px;
+    position: absolute;
+}
+
+/* .conteudoHamb{
+    color: red;
+    border: 10px solid #FFFFFF;
+    top: 69px;
+    left: 81px;
+    width: 1762px;
+    height: 939px;
+    position: absolute;
+} */

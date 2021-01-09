@@ -8,6 +8,7 @@ import './Home.css';
 import {Link} from 'react-router-dom'
 import HamburguerMenu from './HamburguerMenu'
 import Idle from './Idle'
+import { AnimatePresence, motion } from "framer-motion";
 
 class Home extends Component{
     constructor(){
@@ -66,19 +67,27 @@ class Home extends Component{
 
         return(
             <div>
-                <HamburguerMenu/>
-                <div className = 'grid'>
+                <motion.div initial = {{opacity: 0}} animate = {{opacity: 1, transition: {delay: 0.75, duration: 0.5}}} exit = {{opacity: 0, transition: {duration: 0.75}}}>
+                    <div id = "retanguloCastanho"></div>
+                </motion.div>
+
+                <motion.div initial = {{x: 1920, y: 0}} animate = {{x: 10, transition: {duration: 1}}} exit = {{x: 1920, transition: {duration: 0.75}}} className = 'grid'>
                     {baseImages}    
-                </div>
-                <div className='sideBar'>
-                    {tituloLateral}
-                    {descricaoLateral}
-                </div>
-                <img className = 'hl' src={hl} />
-                <img className = 'logo' src={logo} />
-                <div id = 'azul'></div>
-                {/* <Idle isItOn = {this.state.isIdle}/> */}
+                </motion.div>
                 
+                {/* <img className = 'hl' src={hl} /> */}
+                
+                {/* <div id = 'azul'></div>  */}
+                {/* <Idle isItOn = {this.state.isIdle}/> */}
+                <motion.div initial = {{x: -600, y: -5}} animate = {{x:0, y: -10, transition: {duration: 1}}} exit = {{x: -600, y: 0, transition: {duration: 0.75}}}>
+                    <HamburguerMenu/>
+                
+                    <div initial = {{x: -600, y: 0}} animate = {{x:0, y: -5, transition: {duration: 1}}} exit = {{x: -600, y: 0, transition: {duration: 0.75}}} className='sideBar'>
+                        {tituloLateral}
+                        {descricaoLateral}
+                    </div>
+                    <img initial = {{x: -600, y: 0}} animate = {{x:0, y: -5, transition: {duration: 1}}} exit = {{x: -600, y: 0, transition: {duration: 0.75}}} className = 'logo' src={logo} />
+                </motion.div>
             </div>
         )
     }
