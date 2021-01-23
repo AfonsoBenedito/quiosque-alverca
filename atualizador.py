@@ -6,24 +6,17 @@ import refresher
 
 refresher.refresher()
 
-# API KEY:
-key = 'https://api.management.realizasom.com/projects/app/pt/KCLPFYWJcExvInAepy8drWCvddPEHW5Ze2dhn4xuEicMcjUT7PMgsycE8PN5hAOBK4T3Qk97UU83P75p6fZcHBZQNoqCRAYSuIeB'
-
-# HTTP request from API KEY
-getter = requests.get(key, headers={'User-Agent': 'Mozilla/5.0'})
-
-
-####################################################################################
-########################## Get JSON File ###########################################
-####################################################################################
-
-if (getter.status_code == 200): #If there's no error the json file will be written
-    data = getter.json()
-    with open('./front-end/src/assets/data/data.json', 'w') as f:
-        json.dump(data, f, indent=4, ensure_ascii=True) # ensure_ascii=False -> ensures that accented letters do not become ascii
-else: #if there's an error, it will be printed
-    print('Problemas a atualizar o quiosque. Tente novamente ou contacte a empresa.\nErro:', getter.status_code)
-
+def jsonDownloader():
+    languages = ['pt', 'es']
+    for lang in languages:
+        key = 'https://api.management.realizasom.com/projects/app/{}/KCLPFYWJcExvInAepy8drWCvddPEHW5Ze2dhn4xuEicMcjUT7PMgsycE8PN5hAOBK4T3Qk97UU83P75p6fZcHBZQNoqCRAYSuIeB'
+        getter = requests.get(key.format(lang), headers={'User-Agent': 'Mozilla/5.0'})
+        if (getter.status_code == 200): #If there's no error the json file will be written
+            data = getter.json()
+            with open('./front-end/src/assets/data/data{}.json'.format(lang), 'w') as f:
+                json.dump(data, f, indent=4, ensure_ascii=True) # ensure_ascii=False -> ensures that accented letters do not become ascii
+        else: #if there's an error, it will be printed
+            print('Problemas a atualizar o quiosque. Tente novamente ou contacte a empresa.\nErro:', getter.status_code)
 
 ####################################################################################
 ########################## Get file to folder #####################################
@@ -42,11 +35,11 @@ def downloader(fileURL, time = -1):
     tipo = 'baseImages'
     
     #Every file as a given time parameter that indicates the folder to which the file is going
-    if time >= 200: #File is going to 'videos' folder
+    if time >= 700: #File is going to 'videos' folder
         tipo = 'videos'
-    elif time >= 100 and time < 200: #File is going to 'thumbnails' folder
+    elif time >= 500 and time < 700: #File is going to 'thumbnails' folder
         tipo = 'thumbnails'
-    elif time >= 0 and time < 100: #File is going to 'images' folder
+    elif time >= 0 and time < 500: #File is going to 'images' folder
         tipo = 'images'
 
     if response.status_code == 200:
@@ -76,4 +69,17 @@ def exe(data):
             time = data['rooms'][0]['points'][i]['slideshow'][l]['time']
             downloader(slideshow, time)
 
+
+# API KEY:
+key = 'https://api.management.realizasom.com/projects/app/pt/KCLPFYWJcExvInAepy8drWCvddPEHW5Ze2dhn4xuEicMcjUT7PMgsycE8PN5hAOBK4T3Qk97UU83P75p6fZcHBZQNoqCRAYSuIeB'
+
+# HTTP request from API KEY
+getter = requests.get(key, headers={'User-Agent': 'Mozilla/5.0'})
+
+if (getter.status_code == 200): #If there's no error the json file will be written
+    data = getter.json()
+else: #if there's an error, it will be printed
+    print('Problemas a atualizar o quiosque. Tente novamente ou contacte a empresa.\nErro:', getter.status_code)
+
+jsonDownloader()
 exe(data)

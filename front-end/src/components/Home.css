@@ -204,6 +204,7 @@ iframe{
     border-radius: 10px;
     opacity: 1.5;
     z-index: -500;
+    object-fit: cover;
 }
 
 .componenteImagem h1{

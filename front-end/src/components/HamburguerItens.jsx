@@ -2,6 +2,8 @@ import React, { Component } from "react"
 import {HamburguerData} from './HamburguerData'
 import setaVoltar from '../assets/icons/return_arrow.png'
 import './HamburguerItens.css';
+import logo from '../assets/icons/logo.png'
+import { motion } from "framer-motion";
 
 class HamburguerItens extends Component{
     constructor(props){
@@ -62,9 +64,17 @@ class HamburguerItens extends Component{
                 )})}
                 
                 <div className = {this.state.isOn ? 'setaHamb-hidden' : 'setaHamb-active'} onClick = {() => this.handleClickCruz()}>
-                    <img  src ={setaVoltar} />
+                    {/* <div className = 'linhaHamburguer'> </div> */}
+                    <motion.div className = 'borderRight'></motion.div>
+                    <motion.div className = 'borderBottom'></motion.div>
+                    <motion.div className = 'borderLeft'></motion.div>
+                    <img className = 'logoEmItens' src = {logo} />
+                    <img className = 'setaVoltarEmItens'src = {setaVoltar} />
+                    
                 </div>
                 
+                {/* <div className = {this.state.isOn ? 'bordasAtivas' : 'bordasHidden'}> </div> */}
+
                 <div className = 'conteudoHamb'>
                     <h1>{this.state.title}</h1>
                     <p className = 'texto'>{this.state.texto}</p>

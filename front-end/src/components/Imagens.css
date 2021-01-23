@@ -201,11 +201,10 @@
 
 }
 
-.pointInfo h1{
+.pointInfo h1 {
     position: absolute;
     top: 150px;
     left: 48px;
-    width: 162px;
     height: 48px;
     font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-bold) var(--unnamed-font-size-36)/var(--unnamed-line-spacing-48) var(--unnamed-font-family-roboto);
     letter-spacing: var(--unnamed-character-spacing-1-8);
@@ -216,25 +215,24 @@
     opacity: 1;
 }
 
-.pointInfo h2{
+.pointInfo h2 {
     position: absolute;
-    top: 187px;
+    top: 195px;
     left: 48px;
-    width: 162px;
     height: 48px;
     font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-bold) var(--unnamed-font-size-36)/var(--unnamed-line-spacing-48) var(--unnamed-font-family-roboto);
     letter-spacing: var(--unnamed-character-spacing-1-8);
     text-align: left;
-    font: normal normal 36px/48px Roboto;
+    font: normal normal 50px/48px Roboto;
     letter-spacing: 1.8px;
-    color: #d4d4d4;
+    color: #ffffff;
     opacity: 1;
-    font-size: 150%;
+    font-size: 158%;
 }
 
-.pointInfo hr{
+.pointInfo hr {
     position: absolute;
-    top: 245px;
+    top: 266px;
     left: 48px;
     width: 166px;
     height: 0px;
@@ -243,9 +241,9 @@
     opacity: 1;
 }
 
-.pointInfo p{
+.pointInfo p {
     position: absolute;
-    top: 260px;
+    top: 280px;
     left: 48px;
     width: 324px;
     height: 330px;
@@ -328,6 +326,8 @@
     margin: 11.5px;
     z-index: 50;
     float: left;
+    object-fit: contain;
+    background-color: white;
     /* flex: 0 0 250px; */
 }
 

@@ -24,6 +24,7 @@ function HamburguerMenu(){
             </div>         
             <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
                 <img className = 'aviao' src={teste} />
+                <div className = 'linhaHamburguer'> </div>
                 <ul className = 'nav-menu-items'>
                     <li className='navbar-toggle' onClick={showSidebar}><img src={x} className='cruz'/></li>
 
