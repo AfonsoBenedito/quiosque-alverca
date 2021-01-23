@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import data from '../assets/data/data.json'
+import dataPT from '../assets/data/datapt.json'
+import dataES from '../assets/data/dataes.json'
 import Point from './Point'
 import './Imagens.css';
 import setaEsquerda from '../assets/icons/baseline_arrow_left.png'
@@ -66,12 +68,12 @@ class Imagens extends Component{
                 
                 const time = data['rooms'][0]['points'][i]['slideshow'][l]['time']
                 const caption = data['rooms'][0]['points'][i]['slideshow'][l]['caption']
-                if(time > 0 && time < 100){
+                if(time >= 0 && time < 500){
                     const url = '/assets/images/' + data['rooms'][0]['points'][i]['slideshow'][l]['url']
                     const ponto = new Point(idPonto, namePonto, baseImagePonto, titlePonto, subtitlePonto, languageDescPonto, 'null', id, name, url, 'Imagem', time, caption, url)
                     this.pontos.push(ponto)
 
-                }else if(time > 199 && time < 300){
+                }else if(time > 699 && time < 900){
                     const url = '/assets/videos/' + data['rooms'][0]['points'][i]['slideshow'][l]['url']
                     const ponto = new Point(idPonto, namePonto, baseImagePonto, titlePonto, subtitlePonto, languageDescPonto, 'null', id, name, url, 'Video', time, caption, url)
                     this.pontos.push(ponto)
@@ -87,7 +89,7 @@ class Imagens extends Component{
             for (let l = 0; l < data['rooms'][0]['points'][i]['slideshow'].length; l++){
                 const urlParaThumb = '/assets/thumbnails/' + data['rooms'][0]['points'][i]['slideshow'][l]['url']
                 const timeParaThumb = data['rooms'][0]['points'][i]['slideshow'][l]['time']
-                if (timeParaThumb > 99 && timeParaThumb < 200){
+                if (timeParaThumb > 499 && timeParaThumb < 700){
                     for(let k = 0; k < this.pontos.length; k++){
                         if((timeParaThumb - 100) == this.pontos[k].time && idPontoParaThumb == this.pontos[k].idPonto){
                             this.pontos[k].setThumbnail(urlParaThumb)
@@ -277,7 +279,6 @@ class Imagens extends Component{
         return(
             <div>
                 <div className = 'imagenscss'>
-                    
 
                     <motion.div initial = {{x: -427}} animate = {{x: -1, transition: {delay: 0.1, duration: 0.75}}} exit = {{x: -427, transition:{duration: 0.75}}} id = "retanguloAzul"></motion.div>
 
@@ -307,11 +308,11 @@ class Imagens extends Component{
                     </motion.div>
                     
 
-                    <motion.div initial = {{opacity: 1}} animate = {{opacity: 1, transition: {duration: 0.2}}} exit = {{opacity: 0.5, transition: {delay: 0.85, duration: 0.1}}}>
+                    <motion.div initial = {{opacity: 1}} animate = {{opacity: 1, transition: {delay: 0.1, duration: 1}}} exit = {{opacity: 0.5, transition: {delay: 0.85, duration: 0.1}}}>
                         <div id = "retanguloBranco"></div>
                     </motion.div>
 
-                    <motion.div initial = {{opacity: 0}} animate = {{opacity: 1, transition: {duration: 0.1, delay: 0.1}}} exit = {{opacity: 0, transition: {delay: 0.75, duration: 0.1}}}>
+                    <motion.div initial = {{opacity: 0}} animate = {{opacity: 1, transition: {duration: 0.3, delay: 0}}} exit = {{opacity: 0, transition: {delay: 0.75, duration: 0.1}}}>
                         {imagemDeFundo}
                     </motion.div>
                 </div>

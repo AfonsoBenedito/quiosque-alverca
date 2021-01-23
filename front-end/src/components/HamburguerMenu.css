@@ -372,3 +372,27 @@ ul {
     list-style-type: none;
 }
 
+.nav-menu .linhaHamburguer{
+    position: absolute;
+    top: 67.5px;
+    left: 165px;
+    width: 1600px;
+    height: 2px;
+    border: 5px solid #FFFFFF;
+    opacity: 0;
+    background-color: white;
+    transition: 500ms;
+}
+
+.nav-menu.active .linhaHamburguer{
+    position: absolute;
+    top: 67.5px;
+    left: 165px;
+    width: 1600px;
+    height: 2px;
+    border: 5px solid #FFFFFF;
+    opacity: 1;
+    background-color: white;
+    transition: 2000ms;
+}
+

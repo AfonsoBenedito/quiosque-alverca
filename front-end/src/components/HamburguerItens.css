@@ -19,7 +19,7 @@
     /* background-color:red; */
 }
 
-.setaHamb-active img{
+.setaHamb-active .setaVoltarEmItens{
     background-color: #61a0b7;
     top: 55px;
     left: 20px;
@@ -35,3 +35,97 @@
     height: 939px;
     position: absolute;
 } */
+
+.setaHamb-hidden .borderRight{
+    position: absolute;
+    top: 79px;
+    left: 1733px;
+    height: 0px;
+    border: 5px solid white;
+    opacity: 1;
+    z-index: 5000;
+    background-color: white;
+    transition: 1000ms;
+}
+
+.setaHamb-active .borderRight{
+    position: absolute;
+    top: 79px;
+    left: 1733px;
+    height: 890px;
+    border: 5px solid white;
+    opacity: 1;
+    background-color: white;
+    transition: 250ms;
+    transition-timing-function: ease-out;
+}
+
+.setaHamb-hidden .borderBottom{
+    position: absolute;
+    top: 979px;
+    left: 1733px;
+    width: 0px;
+    border: 5px solid white;
+    opacity: 0;
+    z-index: 5000;
+    background-color: white;
+    transition: 1000ms;
+}
+
+.setaHamb-active .borderBottom{
+    position: absolute;
+    top: 979px;
+    left: 124px;
+    border: 5px solid white;
+    opacity: 1;
+    background-color: white;
+    width: 1609px;
+    transition: 250ms;
+    transition-delay: 250ms;
+    transition-timing-function: ease-out;
+}
+
+.setaHamb-hidden .borderLeft{
+    position: absolute;
+    top: 979px;
+    left: 114px;
+    height: 0px;
+    border: 5px solid white;
+    opacity: 0;
+    z-index: 5000;
+    background-color: white;
+    transition: 1000ms;
+}
+
+.setaHamb-active .borderLeft{
+    position: absolute;
+    top: 414px;
+    left: 114px;
+    height: 565px;
+    border: 5px solid white;
+    opacity: 1;
+    background-color: white;
+    transition: 250ms;
+    transition-delay: 500ms;
+    transition-timing-function: ease-out;
+}
+
+.setaHamb-hidden .logoEmItens{
+    position: absolute;
+    top: 55px;
+    left: 1715px;
+    opacity: 0;
+    width: 0%;
+    transition: 1000ms;
+    z-index: -501;
+}
+
+.setaHamb-active .logoEmItens{
+    position: absolute;
+    top: 27px;
+    left: 1653px;
+    opacity: 1;
+    width: 50%;
+    transition: 750ms;
+    transition-delay: 250ms;
+}
