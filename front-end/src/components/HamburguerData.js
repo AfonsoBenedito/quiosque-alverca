@@ -26,7 +26,12 @@ export const HamburguerData = [
     // },
     {
         title: 'Créditos',
-        texto: '',
+        texto6: 'Coordenação geral e apoio à disponibilização de conteúdos:',
+        texto7: 'Câmara Municipal de Vila Franca de Xira / Museu Municipal – Núcleo de Alverca',
+        texto8: 'Desenvolvimento de interface interativo:',
+        texto9: 'Realizasom',
+        texto10: 'info@realizasom.com',
+        texto11: 'Financiado por Turismo de Portugal',
         cName: 'cre'
     }
 ]
