@@ -7,7 +7,7 @@ import refresher
 refresher.refresher()
 
 def jsonDownloader():
-    languages = ['pt', 'es']
+    languages = ['pt', 'es', 'en', 'fr']
     for lang in languages:
         key = 'https://api.management.realizasom.com/projects/app/{}/KCLPFYWJcExvInAepy8drWCvddPEHW5Ze2dhn4xuEicMcjUT7PMgsycE8PN5hAOBK4T3Qk97UU83P75p6fZcHBZQNoqCRAYSuIeB'
         getter = requests.get(key.format(lang), headers={'User-Agent': 'Mozilla/5.0'})

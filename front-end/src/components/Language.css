@@ -2,6 +2,7 @@
     position: absolute;
     top: 930px;
     left: -11px;
+    z-index: 1001;
 }
 
 .eng{
@@ -11,6 +12,7 @@
     width: 36px;
     height: 36px;
     opacity: 1;
+    z-index: 1001;
 }
 
 .pt{
@@ -19,6 +21,7 @@
     left: 76px;
     width: 36px;
     height: 36px;
+    z-index: 1001;
 }
 
 .spa{
@@ -28,6 +31,7 @@
     width: 36px;
     height: 36px;
     opacity: 1;
+    z-index: 1001;
 }
 
 .fra{
@@ -36,4 +40,13 @@
     left: 133px;
     width: 35px;
     height: 33px;
+    z-index: 1001;
+}
+
+.selector{
+    z-index: 50000;
+}
+
+.linguagens{
+    z-index: 1001;
 }

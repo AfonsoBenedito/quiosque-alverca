@@ -7,7 +7,8 @@
     position: absolute;
     top: 0px;
     left: -1px;
-    transition: 1000ms;
+    transition: 2000ms;
+    /* transition-delay: 1500ms; */
     z-index: 500;
 }
 
@@ -18,6 +19,32 @@
     /* transition-delay: 1500ms; */
     transition: 500ms;
     z-index: 1000;
+}
+
+.idle .azulIdle{
+    background-color: #00517D;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 1920px;
+    height: 1080px;
+    z-index: 750;
+    opacity: 0.85;
+    object-fit: cover;
+    transition: 1000ms;
+}
+
+.idle.active .azulIdle{
+    background-color: #00517D;
+    position: absolute;
+    top: 0px;
+    left: -100%;
+    width: 1920px;
+    height: 1080px;
+    z-index: 750;
+    opacity: 0.85;
+    object-fit: cover;
+    transition: 1000ms;
 }
 
 .idle.active{
@@ -34,6 +61,90 @@
 }
 
 .idle.active .logos{
+    opacity: 0;
+    transition: 500ms;
+    z-index: -1;
+}
+
+.idle .textosIdle .comecar{
+    z-index: 1000;
+    position: absolute;
+    top: 936px;
+    left: 775px;
+    width: 386px;
+    height: 31px;
+    font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-bold) var(--unnamed-font-size-30)/43px var(--unnamed-font-family-hornbill-personal-use);
+    text-align: left;
+    font: normal normal bold 30px/43px Hornbill Personal Use;
+    letter-spacing: 1.5px;
+    color: #FFFFFF;
+    text-shadow: 0px 3px 6px #0000004A;
+    opacity: 1;
+    text-align: center;
+}
+
+.idle.active .textosIdle .comecar{
+    opacity: 0;
+    transition: 500ms;
+    z-index: -1;
+    width: 0px;
+    height: 0px;
+}
+
+.idle .textosIdle .tituloIdle{
+    z-index: 1000;
+    position: absolute;
+    top: 106px;
+    left: 530px;
+    width: 462px;
+    height: 37px;
+    font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-bold) 28px/37px var(--unnamed-font-family-hornbill-personal-use);
+    text-align: right;
+    font: normal normal bold 28px/37px Hornbill Personal Use;
+    letter-spacing: 1.4px;
+    color: #FFFFFF;
+}
+
+.idle.active .textosIdle .tituloIdle{
+    z-index: -1000;
+    position: absolute;
+    top: 106px;
+    left: 530px;
+    width: 1px;
+    height: 1px;
+    font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-bold) 28px/37px var(--unnamed-font-family-hornbill-personal-use);
+    text-align: right;
+    font: normal normal bold 28px/37px Hornbill Personal Use;
+    letter-spacing: 1.4px;
+    color: #FFFFFF;
+    opacity: 0;
+    transition: 500ms;
+}
+
+.idle .textosIdle .anosIdle{
+    z-index: 1000;
+    position: absolute;
+    top: 107.75px;
+    left: 1006px;
+    width: 167px;
+    height: 37px;
+    font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-bold) 28px/37px var(--unnamed-font-family-roboto);
+    text-align: left;
+    font: normal normal bold 28px/37px Roboto;
+    letter-spacing: 1.4px;
+    color: #FFFFFF;
+    font-size: 155%;
+}
+
+.idle.active .textosIdle .anosIdle{
+    opacity: 0;
+    transition: 500ms;
+    z-index: -1;
+    width: 0px;
+    height: 0px;
+}
+
+.idle.active .textosIdle{
     opacity: 0;
     transition: 500ms;
     z-index: -1;
