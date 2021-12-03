@@ -13,7 +13,7 @@ def jsonDownloader():
         getter = requests.get(key.format(lang), headers={'User-Agent': 'Mozilla/5.0'})
         if (getter.status_code == 200): #If there's no error the json file will be written
             data = getter.json()
-            with open('./front-end/src/assets/data/data{}.json'.format(lang), 'w') as f:
+            with open('./front-end/public/assets/data/data{}.json'.format(lang), 'w') as f:
                 json.dump(data, f, indent=4, ensure_ascii=True) # ensure_ascii=False -> ensures that accented letters do not become ascii
         else: #if there's an error, it will be printed
             print('Problemas a atualizar o quiosque. Tente novamente ou contacte a empresa.\nErro:', getter.status_code)
