@@ -51,13 +51,6 @@ class App extends Component{
 
     return (
       <div>
-        {/* {console.clear()} */}
-        {/* <Router>
-          <Switch>
-            <Route path='/' exact component={Home} />
-            <Route path='/imagens' component={Imagens}/>
-          </Switch>
-        </Router> */}
 
       <Router>
         <Route
@@ -65,8 +58,8 @@ class App extends Component{
           <AnimatePresence exitBeforeEnter intial = {false}>
               
             <Switch location={location} key={location.pathname}>
-              <Route exact path="/" render={(props) => <Home {...props} teste = {this.state.language} />}  />
-              <Route path="/imagens" render={(props) => <Imagens {...props} teste = {this.state.language} />} />
+              <Route exact path="/quiosque-alverca" render={(props) => <Home {...props} teste = {this.state.language} />}  />
+              <Route path="/quiosque-alverca/imagens" render={(props) => <Imagens {...props} teste = {this.state.language} />} />
             </Switch>
           </AnimatePresence>
         )}

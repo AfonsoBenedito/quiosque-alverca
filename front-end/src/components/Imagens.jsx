@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-// import data from '../assets/data/data.json'
 import data from '../assets/data/datapt.json'
 import dataES from '../assets/data/dataes.json'
 import dataEN from '../assets/data/dataen.json'
@@ -23,7 +22,7 @@ class Imagens extends Component{
         this.setaEsquerda = React.createRef();
         this.setaDireita = React.createRef();
         this.state = {
-            idPonto: parseInt(match.location.pathname.replace('/imagens/', '')),
+            idPonto: parseInt(match.location.pathname.replace('/quiosque-alverca/imagens/', '')),
             activeIndex: null,
             final: null
         }
@@ -86,12 +85,12 @@ class Imagens extends Component{
                 const captionEN = dataEN['rooms'][0]['points'][i]['slideshow'][l]['caption']
                 const captionFR = dataFR['rooms'][0]['points'][i]['slideshow'][l]['caption']
                 if(time >= 0 && time < 500){
-                    const url = '/assets/images/' + data['rooms'][0]['points'][i]['slideshow'][l]['url']
+                    const url = '/quiosque-alverca/assets/images/' + data['rooms'][0]['points'][i]['slideshow'][l]['url']
                     const ponto = new Point(idPonto, namePonto, baseImagePonto, titlePonto, subtitlePonto, languageDescPonto, 'null', id, name, url, 'Imagem', time, caption, url, captionES, languageDescPontoES, titlePontoES, subtitlePontoES, captionEN, languageDescPontoEN, titlePontoEN, subtitlePontoEN, captionFR, languageDescPontoFR, titlePontoFR, subtitlePontoFR)
                     this.pontos.push(ponto)
 
                 }else if(time > 699 && time < 900){
-                    const url = '/assets/videos/' + data['rooms'][0]['points'][i]['slideshow'][l]['url']
+                    const url = '/quiosque-alverca/assets/videos/' + data['rooms'][0]['points'][i]['slideshow'][l]['url']
                     const ponto = new Point(idPonto, namePonto, baseImagePonto, titlePonto, subtitlePonto, languageDescPonto, 'null', id, name, url, 'Video', time, caption, url, captionES, languageDescPontoES, titlePontoES, subtitlePontoES, captionEN, languageDescPontoEN, titlePontoEN, subtitlePontoEN, captionFR, languageDescPontoFR, titlePontoFR, subtitlePontoFR)
                     this.pontos.push(ponto)
 
@@ -104,7 +103,7 @@ class Imagens extends Component{
             const idPontoParaThumb = data['rooms'][0]['points'][i]['id']
 
             for (let l = 0; l < data['rooms'][0]['points'][i]['slideshow'].length; l++){
-                const urlParaThumb = '/assets/thumbnails/' + data['rooms'][0]['points'][i]['slideshow'][l]['url']
+                const urlParaThumb = '/quiosque-alverca/assets/thumbnails/' + data['rooms'][0]['points'][i]['slideshow'][l]['url']
                 const timeParaThumb = data['rooms'][0]['points'][i]['slideshow'][l]['time']
                 if (timeParaThumb > 499 && timeParaThumb < 700){
                     for(let k = 0; k < this.pontos.length; k++){
@@ -300,7 +299,7 @@ class Imagens extends Component{
                 goBack = 'Retour à la galerie'
             }
             return(
-                <Link to={'/'}>
+                <Link to={'/quiosque-alverca/'}>
                     <div className = 'returnHome'>
                         <img className = 'setaHome' src={setaVoltar} />
                         <p>{goBack}</p>
