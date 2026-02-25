@@ -15,6 +15,10 @@
   <p>
     <a href="https://afonsobenedito.github.io/quiosque-alverca/"><strong>View Live Demo →</strong></a>
   </p>
+
+  <br />
+
+  <img src="docs/screenshots/welcome.png" alt="Welcome screen" width="100%" />
 </div>
 
 ---
@@ -36,6 +40,18 @@ Visitors can browse **16 curated exhibits** spanning the history of Alverca, wit
 - **Aspect-ratio locked** — always renders at 1920×1080, scaled to fit any screen
 - **Idle detection** — automatically returns to the home screen after inactivity
 - **Static & deployable** — no backend required; runs fully in the browser
+
+### Exhibit browser
+
+Browse all 16 exhibits from a single grid, with thumbnail previews and titles in the selected language.
+
+<img src="docs/screenshots/home.png" alt="Exhibit grid" width="100%" />
+
+### Exhibit detail
+
+Each exhibit opens a full-screen view with a scrollable photo carousel, historical descriptions, and video content.
+
+<img src="docs/screenshots/exhibit.png" alt="Exhibit detail with photo carousel" width="100%" />
 
 ---
 
