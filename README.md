@@ -13,7 +13,7 @@
   </p>
 
   <p>
-    <a href="https://afonsobenedito.github.io/quiosque-alverca/"><strong>View Live Demo →</strong></a>
+    <a href="https://quiosque-alverca.afonsobenedito.com"><strong>View Live Demo →</strong></a>
   </p>
 
   <br />
