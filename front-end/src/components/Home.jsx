@@ -28,7 +28,7 @@ class Home extends Component{
         for (let i = 0; i < data['rooms'][0]['points'].length; i++){
             const idPonto = data['rooms'][0]['points'][i]['id']
             const namePonto = data['rooms'][0]['points'][i]['name']
-            const baseImagePonto = '/quiosque-alverca/assets/baseImages/' + data['rooms'][0]['points'][i]['baseImage']
+            const baseImagePonto = import.meta.env.BASE_URL + 'assets/baseImages/' + data['rooms'][0]['points'][i]['baseImage']
             const titlePonto = data['rooms'][0]['points'][i]['title']
             const subtitlePonto = data['rooms'][0]['points'][i]['subtitle']
             const titlePontoES = dataES['rooms'][0]['points'][i]['title']
@@ -105,7 +105,7 @@ class Home extends Component{
             
             return(
                 <div className='componenteImagem'>
-                    <Link to={`/quiosque-alverca/imagens/${pontos.idPonto}`}>
+                    <Link to={`/imagens/${pontos.idPonto}`}>
                         <img src={pontos.baseImagePonto}/>
                         <h1>{titulo}</h1>
                         <h2>{subtitulo}</h2>
