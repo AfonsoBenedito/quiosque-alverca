@@ -11,6 +11,8 @@ import pt from './assets/icons/pt.png'
 import spa from './assets/icons/spa.png'
 import fra from './assets/icons/fra.png'
 import eng from './assets/icons/eng.png'
+import idleBg from './assets/icons/teste.png'
+import idleLogos from './assets/icons/idle_logos.png'
 
 
 class App extends Component{
@@ -20,7 +22,8 @@ class App extends Component{
       language: 'pt',
       scale: 1,
       offsetX: 0,
-      offsetY: 0
+      offsetY: 0,
+      ready: false
     }
     this.updateScale = this.updateScale.bind(this)
   }
@@ -35,10 +38,23 @@ class App extends Component{
   componentDidMount() {
     this.updateScale();
     window.addEventListener('resize', this.updateScale);
+
+    // Preload the two critical idle-screen images before revealing the app,
+    // so they paint together instead of popping in layer by layer.
+    let loaded = 0;
+    const onLoad = () => { if (++loaded === 2) this.setState({ ready: true }); };
+    // Fallback: reveal after 3s regardless, in case a resource is slow/fails
+    this._readyTimeout = setTimeout(() => this.setState({ ready: true }), 3000);
+    [idleBg, idleLogos].forEach(src => {
+      const img = new Image();
+      img.onload = img.onerror = onLoad;
+      img.src = src;
+    });
   }
 
   componentWillUnmount() {
     window.removeEventListener('resize', this.updateScale);
+    clearTimeout(this._readyTimeout);
   }
 
   render(){
@@ -70,7 +86,11 @@ class App extends Component{
 
     return (
       <div className="app-outer">
-        <div className="app-frame" style={{ transform: `translate(${this.state.offsetX}px, ${this.state.offsetY}px) scale(${this.state.scale})` }}>
+        <div className="app-frame" style={{
+          transform: `translate(${this.state.offsetX}px, ${this.state.offsetY}px) scale(${this.state.scale})`,
+          opacity: this.state.ready ? 1 : 0,
+          transition: this.state.ready ? 'opacity 0.4s ease-in' : 'none'
+        }}>
 
           <Router>
             <Route
