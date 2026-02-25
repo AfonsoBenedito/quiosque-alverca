@@ -3,7 +3,7 @@ export const HamburguerDataEN = [
         title: 'Who we are',
         texto: 'Part of the Municipal Museum of Vila Franca de Xira, the Alverca Branch (MM–NA) was inaugurated in May 1990.',
         cName: 'qs'
-        
+
     },
     {
         title: 'Contacts',

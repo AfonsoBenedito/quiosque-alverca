@@ -3,7 +3,7 @@ export const HamburguerDataES = [
         title: 'Quiénes somos',
         texto: 'El Núcleo de Alverca (MM-NA), inaugurado en mayo de 1990, forma parte del Museo Municipal de Vila Franca de Xira.',
         cName: 'qs'
-        
+
     },
     {
         title: 'Contactos',
